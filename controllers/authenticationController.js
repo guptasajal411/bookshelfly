@@ -9,6 +9,27 @@ exports.getLogin = function(req, res) {
     res.render("login");
 }
 
+exports.postLogin = function(req, res) {
+    const username = req.body.username;
+    const password = md5(req.body.password);
+
+    User.findOne({ username: username}, function(err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUser) {
+                if (foundUser.password === password) {
+                    res.render("library");
+                } else {
+                    res.send("Wrong password. Try again");
+                }
+            } else {
+                res.send("User not found.");
+            }
+        }
+    });
+}
+
 exports.getRegister = function(req, res) {
     res.render("register");
 }

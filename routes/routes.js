@@ -15,7 +15,8 @@ app
 
 app
     .route("/login")
-    .get(authenticationController.getLogin);
+    .get(authenticationController.getLogin)
+    .post(authenticationController.postLogin);
 
 app
     .route("/library")
