@@ -10,7 +10,8 @@ app
 
 app
     .route("/register")
-    .get(authenticationController.getRegister);
+    .get(authenticationController.getRegister)
+    .post(authenticationController.postRegister);
 
 app
     .route("/login")
