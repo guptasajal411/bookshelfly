@@ -6,7 +6,7 @@ exports.getWelcome = function(req, res) {
 }
 
 exports.getLogin = function(req, res) {
-    res.render("login");
+    res.render("login", { dangerMessage: "" });
 }
 
 exports.postLogin = function(req, res) {
@@ -19,12 +19,12 @@ exports.postLogin = function(req, res) {
         } else {
             if (foundUser) {
                 if (foundUser.password === password) {
-                    res.render("library");
+                    res.redirect("/library");
                 } else {
-                    res.send("Wrong password. Try again");
+                    res.render("login", { dangerMessage: `Wrong password. Please try again.` });
                 }
             } else {
-                res.send("User not found.");
+                res.render("login", { dangerMessage: `User not found. Enter a valid username.` });
             }
         }
     });
