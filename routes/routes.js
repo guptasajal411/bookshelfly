@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
-// const ejs = require('ejs');
 
 const authenticationController = require("../controllers/authenticationController");
 const libraryController = require("../controllers/libraryController");
-
-// app.set('view engine', 'ejs');
 
 app
     .route("/")
@@ -20,5 +17,7 @@ app
     .get(authenticationController.getLogin);
 
 app
-    .route("/")
+    .route("/library")
     .get(libraryController.getLibrary);
+
+module.exports = app;

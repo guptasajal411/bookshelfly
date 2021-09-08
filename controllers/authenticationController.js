@@ -1,5 +1,7 @@
+const User = require("../models/userModel.js")
+
 exports.getWelcome = function(req, res) {
-    res.send("welcome");
+    res.render("welcome");
 }
 
 exports.getLogin = function(req, res) {
