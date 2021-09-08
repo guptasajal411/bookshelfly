@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/register.css">
     <title>Register</title>
 </head>
 <body>
-    Register
+    <div class="text-center">
+        <h2 class="my-5">Register</h2>
+        <form action="/login" method="POST">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Username</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Password</span>
+                <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+            </div>
+            <p>All passwords are stored with <code>md5</code> hashing on a MongoDB Atlas database.</p>
+            <button class="btn btn-primary" type="submit">Register for Bookshelfly!</button>
+        </form>
+    </div>
 </body>
 </html>
