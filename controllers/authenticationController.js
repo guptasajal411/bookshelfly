@@ -19,7 +19,8 @@ exports.postLogin = function(req, res) {
         } else {
             if (foundUser) {
                 if (foundUser.password === password) {
-                    res.redirect("/library");
+                    const objectID = foundUser._id;
+                    res.redirect("/library/" + String(objectID));
                 } else {
                     res.render("login", { dangerMessage: `Wrong password. Please try again.` });
                 }
