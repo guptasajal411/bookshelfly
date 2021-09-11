@@ -19,7 +19,7 @@ app
     .post(authenticationController.postLogin);
 
 app
-    .route("/library/:objectID")
+    .route("/library/:object")
     .get(libraryController.getLibrary);
 
 module.exports = app;
