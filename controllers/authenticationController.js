@@ -13,15 +13,15 @@ exports.postLogin = function(req, res) {
     const username = req.body.username;
     const password = md5(req.body.password);
 
-    User.findOne({ username: username }, function(err, foundUser) {
+    User.findOne({ username: username }, async function(err, foundUser) {
         if (err) {
             console.log(err);
         } else {
             if (foundUser) {
                 if (foundUser.password === password) {
-                    // const object = foundUser._id;
-                    // console.log("/library/" + String(object));
-                    res.redirect("/library/objectoooo");
+                    foundUser.signedIn = true;
+                    await foundUser.save();
+                    res.redirect("/library/" + foundUser._id);
                 } else {
                     res.render("login", { dangerMessage: `Wrong password. Please try again.` });
                 }
