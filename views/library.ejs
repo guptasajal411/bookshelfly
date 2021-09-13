@@ -7,6 +7,10 @@
     <title>Library</title>
 </head>
 <body>
-    Library
+    <h2>Welcome to library!</h2>
+    username: <%= username %>
+    <form action = "/library/<%= userID %>/signout" method = "POST">
+        <button> Sign Out </button>
+    </form>
 </body>
 </html>
