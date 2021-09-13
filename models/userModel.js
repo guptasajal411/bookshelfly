@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     issuedBooks: [{
         bookName: String,
     }],
-    numberOfIssuedBooks: Number
+    numberOfIssuedBooks: Number,
+    signedIn: Boolean
 });
 
 const User = new mongoose.model("User", userSchema);

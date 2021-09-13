@@ -39,7 +39,8 @@ exports.getRegister = function(req, res) {
 exports.postRegister = function(req, res) {
     const newUser = new User({
         username: req.body.username,
-        password: md5(req.body.password)
+        password: md5(req.body.password),
+        signedIn: false
     });
     newUser.save();
     res.redirect("/");
