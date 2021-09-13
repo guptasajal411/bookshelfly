@@ -14,7 +14,6 @@ exports.getLibrary = function(req, res) {
                         res.send(err);
                     } else {
                         res.render("library", { username: foundUser.username, userID: foundUser._id, books: foundBooks.reverse() });
-                        console.log(foundBooks);
                     }
                 });
             }

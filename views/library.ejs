@@ -1,25 +1,32 @@
 <%- include("partials/navbar") -%>
-<link rel="stylesheet" href="./css/library.css">
+<link rel="stylesheet" href="/css/library.css">
     <div class="container">
         <div class="row">
             <% books.forEach(function(book){ %>
-            <div class="col-lg-3 col-12 py-2 px-2">
-                <div class="card shadow border-info h-100">
-                    <img src="<%= book.cover %>" class="card-img-top" alt="">
-                    <div class="card-body container">
-                        <div class="row p-0">
-                            <div>
-                                <h4 class="card-title text-start">
-                                    <%= book.bookName %>
-                                </h4>
+            <div class="col-lg-4 col-12 py-2 px-2 bookColumn">
+                <div class="card shadow border h-100">
+                    <div class="row g-0">
+                        <div class="col-4">
+                            <img src="<%= book.cover %>" class="card-img-top" alt="">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body container">
+                                <div class="row p-0">
+                                    <div>
+                                        <h4 class="card-title text-start">
+                                            <%= book.bookName %>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <p class="card-text">
+                                    Rating: <%= book.rating %> / 5<br>
+                                    Total copies: <%= book.total %><br>
+                                    Available copies: <%= book.available %><br>
+                                    Issued copies: <%= book.issued %><br>
+                                </p>
+                                <button type="button" class="btn btn-outline-success">Issue this book!</button>
                             </div>
                         </div>
-                        <p class="card-text">
-                            Rating: <%= book.rating %> / 5<br>
-                            Total copies: <%= book.total %><br>
-                            Available copies: <%= book.available %><br>
-                            Issued copies: <%= book.issued %><br>
-                        </p>
                     </div>
                 </div>
             </div>

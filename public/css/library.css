@@ -7,8 +7,7 @@
 }
 
 .card-img-top{
-    height: 40%;
+    height: 100%;
     object-fit: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    object-position: left;
 }
