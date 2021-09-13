@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bookshelfly!</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,700;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md py-2">
+        <div class="container">
+            <a href="/library/<%= userID %>" class="navbar-brand">Bookshelfly!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link">Welcome, <%= username %></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="/library/<%= userID %>" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="http://github.com/guptasajal411/bookshelfly" class="nav-link" target="_blank">GitHub</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link p-0">
+                            <form action="/library/<%= userID %>/signout" method="POST">
+                                <button class="btn btn-outline-secondary"> Sign Out </button>
+                            </form>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

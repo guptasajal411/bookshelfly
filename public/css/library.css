@@ -1,0 +1,14 @@
+.card{
+	transition: transform 0.15s;
+}
+
+.card:hover{
+	transform: scale(1.02);
+}
+
+.card-img-top{
+    height: 40%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

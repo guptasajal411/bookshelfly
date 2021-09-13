@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-</head>
-<body>
-    <h2>Welcome to library!</h2>
-    username: <%= username %>
-    <form action = "/library/<%= userID %>/signout" method = "POST">
-        <button> Sign Out </button>
-    </form>
-</body>
-</html>
+<%- include("partials/navbar") -%>
+<link rel="stylesheet" href="./css/library.css">
+    <div class="container">
+        <div class="row">
+            <% books.forEach(function(book){ %>
+            <div class="col-lg-3 col-12 py-2 px-2">
+                <div class="card shadow border-info h-100">
+                    <img src="<%= book.cover %>" class="card-img-top" alt="">
+                    <div class="card-body container">
+                        <div class="row p-0">
+                            <div>
+                                <h4 class="card-title text-start">
+                                    <%= book.bookName %>
+                                </h4>
+                            </div>
+                        </div>
+                        <p class="card-text">
+                            Rating: <%= book.rating %> / 5<br>
+                            Total copies: <%= book.total %><br>
+                            Available copies: <%= book.available %><br>
+                            Issued copies: <%= book.issued %><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    </body>
+
+    </html>
