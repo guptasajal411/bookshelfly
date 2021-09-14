@@ -14,8 +14,6 @@ exports.getLibrary = function(req, res) {
                         res.send(err);
                     } else {
                         res.render("library", {
-                            // username: foundUser.username,
-                            // userID: foundUser._id,
                             user: foundUser,
                             books: foundBooks.reverse()
                         });
@@ -51,13 +49,27 @@ exports.postIssueBook = function (req, res){
                 }
             });
             if (!hasBook) {
+                // adding selected book to the user collection
                 foundUser.issuedBooks.push({
                     bookName: req.body.bookName
                 });
                 await foundUser.save();
-                res.send("you have issued this book under your name now.");
+                // user issues the new book
+                // updating available and issued books in library collection
+                Library.findOne({ bookName: req.body.bookName }, async function (error, libraryBook){
+                    if (error) {
+                        res.send(err);
+                    } else {
+                        // console.log(libraryBook);
+                        libraryBook.available = libraryBook.available - 1;
+                        libraryBook.issued = libraryBook.issued + 1;
+                        await libraryBook.save();
+                        res.redirect("/library/" + req.params.userID);
+                    }
+                });
             } else {
-                res.send("you already have this book under your sleeves.");
+                // user already issued the book
+                res.redirect("/library/" + req.params.userID);
             }
         }
     });

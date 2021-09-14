@@ -11,3 +11,7 @@
     object-fit: cover;
     object-position: left;
 }
+
+.bookColumn .row {
+    height: inherit;
+}

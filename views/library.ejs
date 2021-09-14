@@ -41,9 +41,9 @@
                                         </div>
                                         <p class="card-text">
                                             Rating: <%= book.rating %> / 5<br>
-                                                Total copies: <%= book.total %><br>
-                                                    Available copies: <%= book.available %><br>
-                                                        Issued copies: <%= book.issued %><br>
+                                            Available copies: <%= book.available %><br>
+                                            Issued copies: <%= book.issued %><br>
+                                            Total copies: <%= book.total %><br>
                                         </p>
                                         <form action="/library/<%= user._id %>/issueBook" method="POST">
                                             <button name="bookName" value="<%= book.bookName %>" type="submit"

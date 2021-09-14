@@ -12,17 +12,18 @@ const librarySchema = new mongoose.Schema({
     rating: Number
 });
 
+const Library = new mongoose.model("Library", librarySchema);
+
 // create new book in the library
 // const newBook = new Library({
-//     bookName: "The Lord of the Rings",
-//     issued: 20,
-//     available: 30,
-//     total: 50,
-//     cover: "https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL.jpg",
-//     rating: 4
+//     bookName: "Diary of a Wimpy Kid: The Long Haul",
+//     issued: 160,
+//     available: 40,
+//     total: 200,
+//     cover: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Diary_of_a_Wimpy_Kid_The_Long_Haul_book_cover.jpg/220px-Diary_of_a_Wimpy_Kid_The_Long_Haul_book_cover.jpg",
+//     rating: 5
 // });
 // newBook.save();
-
-const Library = new mongoose.model("Library", librarySchema);
+// console.log("newbook saved");
 
 module.exports = Library;
