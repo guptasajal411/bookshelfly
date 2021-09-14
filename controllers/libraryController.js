@@ -32,3 +32,24 @@ exports.postSignout = function(req, res) {
         }
     });
 }
+
+exports.postIssueBook = function (req, res){
+    User.findOne({_id: req.params.userID}, async function(err, foundUser) {
+        if (err) {
+            res.send(err);
+        } else {
+            var hasBook = false;
+            foundUser.issuedBooks.find(function(object){
+                // console.log(object.bookname + " :: " + req.body.bookName);
+                if (object.bookName === req.body.bookName){
+                    res.send("you already have that book under your sleeves.");
+                    hasBook = true;
+                }
+                console.log(hasBook);
+                if (!hasBook) {
+                    res.send("you have issued this book under your name now");
+                }
+            });
+        }
+    });
+}
