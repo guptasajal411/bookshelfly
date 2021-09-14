@@ -24,7 +24,9 @@
                                     Available copies: <%= book.available %><br>
                                     Issued copies: <%= book.issued %><br>
                                 </p>
-                                <button type="button" class="btn btn-outline-success">Issue this book!</button>
+                                <form action="/library/<%= userID %>/issueBook" method="POST">
+                                    <button type="button" class="btn btn-outline-success">Issue this book!</button>
+                                </form>
                             </div>
                         </div>
                     </div>

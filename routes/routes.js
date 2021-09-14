@@ -25,4 +25,9 @@ app
 app
     .route("/library/:userID/signout")
     .post(libraryController.postSignout);
+
+app
+    .route("/library/:userID/issueBook")
+    .post(libraryController.postIssueBook);
+
 module.exports = app;
