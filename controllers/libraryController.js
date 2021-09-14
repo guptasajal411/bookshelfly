@@ -13,7 +13,12 @@ exports.getLibrary = function(req, res) {
                     if (err) {
                         res.send(err);
                     } else {
-                        res.render("library", { username: foundUser.username, userID: foundUser._id, books: foundBooks.reverse() });
+                        res.render("library", {
+                            // username: foundUser.username,
+                            // userID: foundUser._id,
+                            user: foundUser,
+                            books: foundBooks.reverse()
+                        });
                     }
                 });
             }

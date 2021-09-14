@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-light navbar-expand-md py-2">
         <div class="container">
-            <a href="/library/<%= userID %>" class="navbar-brand">Bookshelfly!</a>
+            <a href="/library/<%= user._id %>" class="navbar-brand">Bookshelfly!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,17 +30,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link">Welcome, <%= username %></a>
+                        <a class="nav-link">Welcome, <%= user.username %></a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a href="/library/<%= userID %>" class="nav-link">Home</a>
+                        <a href="/library/<%= user._id %>" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a href="http://github.com/guptasajal411/bookshelfly" class="nav-link" target="_blank">GitHub</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link p-0">
-                            <form action="/library/<%= userID %>/signout" method="POST">
+                            <form action="/library/<%= user._id %>/signout" method="POST">
                                 <button class="btn btn-outline-secondary"> Sign Out </button>
                             </form>
                         </a>
