@@ -39,17 +39,21 @@ exports.postIssueBook = function (req, res){
             res.send(err);
         } else {
             var hasBook = false;
-            foundUser.issuedBooks.find(function(object){
-                // console.log(object.bookname + " :: " + req.body.bookName);
+            foundUser.issuedBooks.forEach(async function(object){
+                // console.log(object.bookName + " :: " + req.body.bookName);
                 if (object.bookName === req.body.bookName){
-                    res.send("you already have that book under your sleeves.");
                     hasBook = true;
                 }
-                console.log(hasBook);
-                if (!hasBook) {
-                    res.send("you have issued this book under your name now");
-                }
             });
+            if (!hasBook) {
+                foundUser.issuedBooks.push({
+                    bookName: req.body.bookName
+                });
+                await foundUser.save();
+                res.send("you have issued this book under your name now.");
+            } else {
+                res.send("you already have this book under your sleeves.");
+            }
         }
     });
 }
