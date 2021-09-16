@@ -88,6 +88,16 @@ exports.postReturnBook = function(req, res) {
                 }
             });
             // updating available and issued books in Library collection
+            Library.findOne({bookName: req.body.returnBookName}, async function(err, foundBook){
+                if (err) {
+                    res.send(err);
+                } else {
+                    foundBook.issued = foundBook.issued - 1;
+                    foundBook.available = foundBook.available + 1;
+                    await foundBook.save();
+                }
+            });
+            // redirecting to user's library
             res.redirect("/library/" + req.params.userID);
         }
     });
