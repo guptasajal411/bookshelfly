@@ -15,3 +15,7 @@
 .bookColumn .row {
     height: inherit;
 }
+
+.outOfStock:hover{
+    cursor: not-allowed;
+}

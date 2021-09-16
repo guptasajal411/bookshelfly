@@ -45,10 +45,13 @@
                                             Issued copies: <%= book.issued %><br>
                                             Total copies: <%= book.total %><br>
                                         </p>
-                                        <form action="/library/<%= user._id %>/issueBook" method="POST">
-                                            <button name="bookName" value="<%= book.bookName %>" type="submit"
-                                                class="btn btn-outline-success">Issue this book!</button>
-                                        </form>
+                                        <% if (book.available <= 0){ %>
+                                            <button class="btn btn-outline-danger outOfStock">Out of Stock!</button>
+                                        <% } else { %>
+                                            <form action="/library/<%= user._id %>/issueBook" method="POST">
+                                                <button name="bookName" value="<%= book.bookName %>" type="submit" class="btn btn-outline-success">Issue this book!</button>
+                                            </form>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
