@@ -74,3 +74,21 @@ exports.postIssueBook = function (req, res){
         }
     });
 }
+
+exports.postReturnBook = function(req, res) {
+    User.findOne({_id: req.params.userID}, function(err, foundUser){
+        if (err) {
+            res.send(err);
+        } else {
+            // removing book from issuedBooks array of users collection
+            foundUser.issuedBooks.forEach( async function(object, index){
+                if (object.bookName == req.body.returnBookName){
+                    foundUser.issuedBooks.splice(index, 1);
+                    await foundUser.save();
+                }
+            });
+            // updating available and issued books in Library collection
+            res.redirect("/library/" + req.params.userID);
+        }
+    });
+}

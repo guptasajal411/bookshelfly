@@ -30,4 +30,7 @@ app
     .route("/library/:userID/issueBook")
     .post(libraryController.postIssueBook);
 
+app
+    .route("/library/:userID/returnBook")
+    .post(libraryController.postReturnBook);
 module.exports = app;
