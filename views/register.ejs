@@ -21,9 +21,12 @@
                 <span class="input-group-text" id="basic-addon2">Password</span>
                 <input name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
             </div>
-            <p>All passwords are stored with <code>md5</code> hashing on a MongoDB Atlas database.</p>
+            <p class="text-center dangerMessage px-3">
+                <%= dangerMessage %>
+            </p>
             <button class="btn btn-primary" type="submit">Register for Bookshelfly!</button>
         </form>
     </div>
+    <script src="/js/register.js"></script>
 </body>
 </html>

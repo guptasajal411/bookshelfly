@@ -1,19 +1,19 @@
 const md5 = require('md5');
 const User = require("../models/userModel.js");
 
-exports.getWelcome = function(req, res) {
+exports.getWelcome = function (req, res) {
     res.render("welcome");
 }
 
-exports.getLogin = function(req, res) {
+exports.getLogin = function (req, res) {
     res.render("login", { dangerMessage: "" });
 }
 
-exports.postLogin = function(req, res) {
+exports.postLogin = function (req, res) {
     const username = req.body.username;
     const password = md5(req.body.password);
 
-    User.findOne({ username: username }, async function(err, foundUser) {
+    User.findOne({ username: username }, async function (err, foundUser) {
         if (err) {
             console.log(err);
         } else {
@@ -32,16 +32,26 @@ exports.postLogin = function(req, res) {
     });
 }
 
-exports.getRegister = function(req, res) {
-    res.render("register");
+exports.getRegister = function (req, res) {
+    res.render("register", { dangerMessage: "" });
 }
 
-exports.postRegister = function(req, res) {
-    const newUser = new User({
-        username: req.body.username,
-        password: md5(req.body.password),
-        signedIn: false
+exports.postRegister = function (req, res) {
+    User.findOne({ username: req.body.username }, async function (err, foundUser) {
+        if (err) {
+            res.send(err);
+        } else {
+            if (foundUser == null) {
+                const newUser = new User({
+                    username: req.body.username,
+                    password: md5(req.body.password),
+                    signedIn: false
+                });
+                newUser.save();
+                res.redirect("/");
+            } else {
+                res.render("register", { dangerMessage: "Username already exists. Please use another username." });
+            }
+        }
     });
-    newUser.save();
-    res.redirect("/");
 }
