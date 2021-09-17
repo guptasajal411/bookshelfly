@@ -1,3 +1,3 @@
-if($("alert").html() === undefined){
-    $("alert").css("display", "none!important");
-};
+if (document.querySelector(".dangerMessage").innerHTML === `true`){
+    $(".dangerMessage").css("display", "none");
+}

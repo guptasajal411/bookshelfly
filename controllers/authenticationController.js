@@ -6,7 +6,7 @@ exports.getWelcome = function (req, res) {
 }
 
 exports.getLogin = function (req, res) {
-    res.render("login", { dangerMessage: "" });
+    res.render("login", { dangerMessage: "true" });
 }
 
 exports.postLogin = function (req, res) {
@@ -33,7 +33,7 @@ exports.postLogin = function (req, res) {
 }
 
 exports.getRegister = function (req, res) {
-    res.render("register", { dangerMessage: "" });
+    res.render("register", { dangerMessage: "true" });
 }
 
 exports.postRegister = function (req, res) {
