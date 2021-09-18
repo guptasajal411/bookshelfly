@@ -1,0 +1,18 @@
+<%- include("partials/navbar") -%>
+    <div class="text-center container">
+        <h2 class="my-5">Add a new book to library!</h2>
+        <form action="/library/<%= user._id %>/newBook" method="POST">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Book Name</span>
+                <input name="newBookName" type="text" class="form-control" placeholder="New Book Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Book Cover URL</span>
+                <input name="newBookName" type="text" class="form-control" placeholder="Book's cover URL" aria-describedby="basic-addon1">
+            </div>
+            <button class="btn btn-primary" type="submit">Add book to the library!</button>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>

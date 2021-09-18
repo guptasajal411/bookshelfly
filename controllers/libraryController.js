@@ -102,3 +102,17 @@ exports.postReturnBook = function(req, res) {
         }
     });
 }
+
+exports.getNewBook = async function(req, res) {
+    User.findOne({_id: req.params.userID}, function(err, foundUser){
+        if (err) {
+            res.send(`Please login or register <a href="/">here</a> before accessing the library!`);
+        } else {
+            if (foundUser.signedIn == false) {
+                res.render("login", { dangerMessage: "Please Sign In before adding a book to the library."})
+            } else {
+                res.render("newBook", { user: foundUser });
+            }
+        }
+    });
+}
