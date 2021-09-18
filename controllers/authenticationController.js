@@ -1,14 +1,20 @@
 const md5 = require('md5');
 const User = require("../models/userModel.js");
 
+// GET
+// landing page for bookshelfly
 exports.getWelcome = function (req, res) {
     res.render("welcome");
 }
 
+// GET
+// login page
 exports.getLogin = function (req, res) {
     res.render("login", { dangerMessage: "true" });
 }
 
+// POST
+// login authentication
 exports.postLogin = function (req, res) {
     const username = req.body.username;
     const password = md5(req.body.password);
@@ -32,10 +38,14 @@ exports.postLogin = function (req, res) {
     });
 }
 
+// GET
+// registration page
 exports.getRegister = function (req, res) {
     res.render("register", { dangerMessage: "true" });
 }
 
+// POST
+// registration page
 exports.postRegister = function (req, res) {
     User.findOne({ username: req.body.username }, async function (err, foundUser) {
         if (err) {

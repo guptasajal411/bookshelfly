@@ -1,6 +1,8 @@
 const Library = require("../models/libraryModel.js");
 const User = require("../models/userModel.js");
 
+// GET
+// library homepage
 exports.getLibrary = function(req, res) {
     User.findOne({_id: req.params.userID}, function(err, foundUser) {
         if (err) {
@@ -24,6 +26,8 @@ exports.getLibrary = function(req, res) {
     });
 }
 
+// POST
+// sign out from the library
 exports.postSignout = function(req, res) {
     User.findOne({_id: req.params.userID}, async function(err, foundUser) {
         if (err) {
@@ -36,6 +40,8 @@ exports.postSignout = function(req, res) {
     });
 }
 
+// POST
+// issue a book from the library
 exports.postIssueBook = function (req, res){
     User.findOne({_id: req.params.userID}, async function(err, foundUser) {
         if (err) {
@@ -75,6 +81,8 @@ exports.postIssueBook = function (req, res){
     });
 }
 
+// POST
+// return books to the library
 exports.postReturnBook = function(req, res) {
     User.findOne({_id: req.params.userID}, function(err, foundUser){
         if (err) {
@@ -103,6 +111,8 @@ exports.postReturnBook = function(req, res) {
     });
 }
 
+// GET
+// add new books to the library
 exports.getNewBook = async function(req, res) {
     User.findOne({_id: req.params.userID}, function(err, foundUser){
         if (err) {
@@ -117,6 +127,8 @@ exports.getNewBook = async function(req, res) {
     });
 }
 
+// POST
+// add new books to the library
 exports.postNewBook = function(req, res){
     Library.findOne({ bookName: req.body.newBookName }, function(err, foundBook){
         if (err) {
