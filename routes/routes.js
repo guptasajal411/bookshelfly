@@ -36,7 +36,7 @@ app
 
 app
     .route("/library/:userID/newBook")
-    .get(libraryController.getNewBook);
-    // .post(libraryController.postNewBook);
+    .get(libraryController.getNewBook)
+    .post(libraryController.postNewBook);
 
 module.exports = app;

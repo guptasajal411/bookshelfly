@@ -116,3 +116,17 @@ exports.getNewBook = async function(req, res) {
         }
     });
 }
+
+exports.postNewBook = function(req, res){
+    Library.findOne({ bookName: req.body.newBookName }, function(err, foundBook){
+        if (err) {
+            res.send(err);
+        } else {
+            if (foundBook) {
+                res.send(`Sorry, that book already exists in the library, please try with another book.`);
+            } else {
+                res.redirect("/library/" + req.params.userID);
+            }
+        }
+    });
+}
