@@ -144,7 +144,7 @@ exports.postNewBook = function (req, res) {
                         available: 50,
                         total: 50,
                         cover: req.body.newBookCover,
-                        rating: 4
+                        rating: req.body.newBookRating
                     });
                     await newBook.save();
                 } else {
@@ -154,7 +154,7 @@ exports.postNewBook = function (req, res) {
                         available: 50,
                         total: 50,
                         cover: "https://source.unsplash.com/random",
-                        rating: 4
+                        rating: req.body.newBookRating
                     });
                     await newBook.save();
                 }
