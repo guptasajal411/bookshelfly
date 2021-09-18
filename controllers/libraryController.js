@@ -3,15 +3,15 @@ const User = require("../models/userModel.js");
 
 // GET
 // library homepage
-exports.getLibrary = function(req, res) {
-    User.findOne({_id: req.params.userID}, function(err, foundUser) {
+exports.getLibrary = function (req, res) {
+    User.findOne({ _id: req.params.userID }, function (err, foundUser) {
         if (err) {
             res.send(err);
         } else {
             if (foundUser.signedIn == false) {
-                res.render("login", { dangerMessage: "Please Sign In before accessing the library."})
+                res.render("login", { dangerMessage: "Please Sign In before accessing the library." })
             } else {
-                Library.find({}, function(err, foundBooks) {
+                Library.find({}, function (err, foundBooks) {
                     if (err) {
                         res.send(err);
                     } else {
@@ -28,8 +28,8 @@ exports.getLibrary = function(req, res) {
 
 // POST
 // sign out from the library
-exports.postSignout = function(req, res) {
-    User.findOne({_id: req.params.userID}, async function(err, foundUser) {
+exports.postSignout = function (req, res) {
+    User.findOne({ _id: req.params.userID }, async function (err, foundUser) {
         if (err) {
             res.send(err);
         } else {
@@ -42,15 +42,15 @@ exports.postSignout = function(req, res) {
 
 // POST
 // issue a book from the library
-exports.postIssueBook = function (req, res){
-    User.findOne({_id: req.params.userID}, async function(err, foundUser) {
+exports.postIssueBook = function (req, res) {
+    User.findOne({ _id: req.params.userID }, async function (err, foundUser) {
         if (err) {
             res.send(err);
         } else {
             var hasBook = false;
-            foundUser.issuedBooks.forEach(async function(object){
+            foundUser.issuedBooks.forEach(async function (object) {
                 // console.log(object.bookName + " :: " + req.body.bookName);
-                if (object.bookName === req.body.bookName){
+                if (object.bookName === req.body.bookName) {
                     hasBook = true;
                 }
             });
@@ -62,7 +62,7 @@ exports.postIssueBook = function (req, res){
                 await foundUser.save();
                 // user issues the new book
                 // updating available and issued books in library collection
-                Library.findOne({ bookName: req.body.bookName }, async function (error, libraryBook){
+                Library.findOne({ bookName: req.body.bookName }, async function (error, libraryBook) {
                     if (error) {
                         res.send(err);
                     } else {
@@ -83,20 +83,20 @@ exports.postIssueBook = function (req, res){
 
 // POST
 // return books to the library
-exports.postReturnBook = function(req, res) {
-    User.findOne({_id: req.params.userID}, function(err, foundUser){
+exports.postReturnBook = function (req, res) {
+    User.findOne({ _id: req.params.userID }, function (err, foundUser) {
         if (err) {
             res.send(err);
         } else {
             // removing book from issuedBooks array of users collection
-            foundUser.issuedBooks.forEach( async function(object, index){
-                if (object.bookName == req.body.returnBookName){
+            foundUser.issuedBooks.forEach(async function (object, index) {
+                if (object.bookName == req.body.returnBookName) {
                     foundUser.issuedBooks.splice(index, 1);
                     await foundUser.save();
                 }
             });
             // updating available and issued books in Library collection
-            Library.findOne({bookName: req.body.returnBookName}, async function(err, foundBook){
+            Library.findOne({ bookName: req.body.returnBookName }, async function (err, foundBook) {
                 if (err) {
                     res.send(err);
                 } else {
@@ -113,13 +113,13 @@ exports.postReturnBook = function(req, res) {
 
 // GET
 // add new books to the library
-exports.getNewBook = async function(req, res) {
-    User.findOne({_id: req.params.userID}, function(err, foundUser){
+exports.getNewBook = async function (req, res) {
+    User.findOne({ _id: req.params.userID }, function (err, foundUser) {
         if (err) {
             res.send(`Please login or register <a href="/">here</a> before accessing the library!`);
         } else {
             if (foundUser.signedIn == false) {
-                res.render("login", { dangerMessage: "Please Sign In before adding a book to the library."})
+                res.render("login", { dangerMessage: "Please Sign In before adding a book to the library." })
             } else {
                 res.render("newBook", { user: foundUser });
             }
@@ -129,14 +129,35 @@ exports.getNewBook = async function(req, res) {
 
 // POST
 // add new books to the library
-exports.postNewBook = function(req, res){
-    Library.findOne({ bookName: req.body.newBookName }, function(err, foundBook){
+exports.postNewBook = function (req, res) {
+    Library.findOne({ bookName: req.body.newBookName }, async function (err, foundBook) {
         if (err) {
             res.send(err);
         } else {
             if (foundBook) {
                 res.send(`Sorry, that book already exists in the library, please try with another book.`);
             } else {
+                if (req.body.newBookCover) {
+                    const newBook = new Library({
+                        bookName: req.body.newBookName,
+                        issued: 0,
+                        available: 50,
+                        total: 50,
+                        cover: req.body.newBookCover,
+                        rating: 4
+                    });
+                    await newBook.save();
+                } else {
+                    const newBook = new Library({
+                        bookName: req.body.newBookName,
+                        issued: 0,
+                        available: 50,
+                        total: 50,
+                        cover: "https://source.unsplash.com/random",
+                        rating: 4
+                    });
+                    await newBook.save();
+                }
                 res.redirect("/library/" + req.params.userID);
             }
         }
