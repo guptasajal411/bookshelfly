@@ -1,9 +1,12 @@
 <%- include("partials/navbar") -%>
     <link rel="stylesheet" href="/css/library.css">
     <div class="container">
-        <h3 class="mt-2">Your books:</h3>
+        <h4 class="mt-2">Your books:</h4>
         <div class="container">
             <div class="row">
+                <% if (user.issuedBooks.length === 0) {%>
+                    <p class="text-danger">You dont have any book up your sleeves, grab one from the library below!</p>
+                <% } %>
                 <% user.issuedBooks.forEach(function(book){ %>
                     <div class="col-lg-2 col-12 py-2 px-2">
                         <div class="card h-100">
@@ -20,7 +23,20 @@
                 <% }); %>
             </div>
         </div>
-        <h3 class="mt-5">Browse books from the library: </h3>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-8">
+                    <h4>Browse books from the library: </h4>
+                </div>
+                <div class="col-4">
+                    <div class="float-end">
+                        <a href="#">
+                            <button type="submit" class="btn btn-primary">Add new book!</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <% books.forEach(function(book){ %>
