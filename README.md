@@ -1,8 +1,6 @@
 # 📚 Bookshelfly
 Bookshelfy is an open-source, remote library access application. Users can access their issues from anywhere, anytime! Being a full stack application, users can register, login and even add their own books to the library as well!
 
-# 📷 Screenshots
-
 # 🥳 Features
 - ✅ New users can register for Bookshelfy
 - ✅ Allows users to login and logout
@@ -25,6 +23,27 @@ Bookshelfy is an open-source, remote library access application. Users can acces
 - Database: I have used MongoDB Atlas for remote database, and Mongoose for modelling the application data.
 - Two schemas & collections, one for data of users, and another for public library.
 - Deployed on Heroku! - https://try-bookshelfly.herokuapp.com
+
+# 📷 Screenshots
+![image](https://user-images.githubusercontent.com/70312106/133935324-d7f88ac6-39ad-4ea6-a9f0-fbe53e2376ed.png)
+
+<hr>
+
+![image](https://user-images.githubusercontent.com/70312106/133935327-3a85c225-0d37-4109-8fec-ade4bf4c478d.png)
+
+<hr>
+
+![image](https://user-images.githubusercontent.com/70312106/133935331-b09e6f4c-cd62-47e6-bdb1-9996148a2b20.png)
+
+<hr>
+
+![image](https://user-images.githubusercontent.com/70312106/133935333-00423f16-75e4-45b0-81d5-4d47354a8f6f.png)
+
+<hr>
+
+![image](https://user-images.githubusercontent.com/70312106/133935335-2b27f278-e581-41ff-b114-9e835aed29e7.png)
+
+
 
 # 🤔 How to use this?
 - You can access all cool features of Bookshelfly here: https://try-bookshelfly.herokuapp.com
