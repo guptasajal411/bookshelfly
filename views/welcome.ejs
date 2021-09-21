@@ -1,55 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/welcome.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <title>Welcome</title>
-</head>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">Bookshelfly!</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item me-3">
-                            <a href="https://github.com/guptasajal411/bookshelfly" class="nav-link">GitHub</a>
-                        </li>
-                        <a href="/login">
-                            <button class="btn btn-outline-info me-3">Login</button>
-                        </a>
-                        <a href="/register">
-                            <button class="btn btn-info">Register</button>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="container">
+<%- include("partials/welcomeNavbar") -%>
+    <div class="container mt-md-4">
         <div class="row mt-auto">
             <div class="col-md-6 col-12">
                 <div class="text-center">
-                    <h1 class="my-5">Welcome to Bookshelfly!</h1>
+                    <h1 class="mb-md-5 mt-10 josefin">Welcome to Bookshelfly!</h1>
                     <a href="/login">
-                        <button type="button" class="btn btn-outline-primary my-5">Login</button>
+                        <button type="button" class="play btn btn-outline-primary my-5">Login</button>
                     </a>
                     <a href="/register">
-                        <button type="button" class="btn btn-primary my-5">Register</button>
+                        <button type="button" class="play btn btn-primary my-5">Register</button>
                     </a>
                 </div>
             </div>

@@ -1,3 +1,11 @@
-.container{
-    height: 100vh;
+.mt-10{
+    margin-top: 10rem
+}
+
+.josefin{
+    font-family: "Josefin Sans";
+}
+
+.play{
+    font-family: "Play"
 }
